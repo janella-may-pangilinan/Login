@@ -4,7 +4,7 @@ import 'package:loginflutter/homepage.dart';
 void main(){
   runApp(CupertinoApp(
     theme: CupertinoThemeData(
-      brightness: Brightness.dark
+        brightness: Brightness.dark
     ),
     debugShowCheckedModeBanner: false,
     home: MyApp(),
@@ -24,6 +24,8 @@ class _MyAppState extends State<MyApp> {
   TextEditingController _password = TextEditingController();
   bool hidePassword = true;
   String error = "";
+  bool rememberMe = false;
+
   bool isLogin(String username, String password) {
     if(username == "admin" && password == "123"){
       setState(() {
@@ -35,60 +37,73 @@ class _MyAppState extends State<MyApp> {
     }else{
       return false;
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(child: Padding(
       padding: const EdgeInsets.all(13.0),
-    child:SafeArea(child: Column(
-    children: [
-      SizedBox(height: 200,),
-      Row(
+      child:SafeArea(child: Column(
         children: [
-          Text('facebook', style: TextStyle(color: CupertinoColors.systemBlue, fontWeight: FontWeight.bold, fontSize: 30),),
+          SizedBox(height: 150,),
+          Row(
+            children: [
+              Text('facebook', style: TextStyle(color: CupertinoColors.systemBlue, fontWeight: FontWeight.bold, fontSize: 30),),
+            ],
+          ),
+          SizedBox(height: 20,),
+          CupertinoTextField(
+            controller: _username,
+            placeholder: "Username",
+            padding: EdgeInsets.all(13.0),
+          ),
+          SizedBox(height: 5,),
+          CupertinoTextField(
+            controller: _password,
+            placeholder: "Password",
+            padding: EdgeInsets.all(10.0),
+            obscureText: hidePassword,
+            suffix: CupertinoButton(child: Icon(hidePassword? CupertinoIcons.eye:  CupertinoIcons.eye_slash, size: 20,), onPressed:() {
+              setState(() {
+                hidePassword = !hidePassword;
+              });
+            }),
+          ),
+          SizedBox(height: 20,),
+          Container(
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+                color: CupertinoColors.systemBlue
+            ),
+            child: CupertinoButton(child: Text('Login', style: TextStyle(color: CupertinoColors.white),), onPressed:(){
+              isLogin(_username.text, _password.text) ?
+
+              Navigator.push(context,CupertinoPageRoute(builder: (context)=> Homepage()))
+                  : setState(() {
+                _password.text = "";
+                error = "Incorrect Username or Password";
+              });;
+            }),
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CupertinoButton(
+                padding: EdgeInsets.zero,
+                child: Text("Forgot Password?", style: TextStyle(color: CupertinoColors.systemBlue)),
+                onPressed: () {
+                  // Handle forgot password action
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Text("$error", style: TextStyle(color: CupertinoColors.destructiveRed),)
         ],
-      ),
-      SizedBox(height: 20,),
-      CupertinoTextField(
-        controller: _username,
-        placeholder: "Username",
-        padding: EdgeInsets.all(13.0),
 
-      ),
-      SizedBox(height: 5,),
-      CupertinoTextField(
-        controller: _password,
-        placeholder: "Password",
-        padding: EdgeInsets.all(10.0),
-        obscureText: hidePassword,
-        suffix: CupertinoButton(child: Icon(hidePassword? CupertinoIcons.eye:  CupertinoIcons.eye_slash, size: 20,), onPressed:() {
-          setState(() {
-           hidePassword = !hidePassword;
-          });
-        }),
-      ),
-     SizedBox(height: 20,),
-     Container(
-       width: double.maxFinite,
-       decoration: BoxDecoration(
-         color: CupertinoColors.systemBlue
-       ),
-       child: CupertinoButton(child: Text('Login', style: TextStyle(color: CupertinoColors.white),), onPressed:(){
-        isLogin(_username.text, _password.text) ?
+      )),
 
-        Navigator.pushReplacement(context,CupertinoPageRoute(builder: (context)=> Homepage()))
-        : setState(() {
-          _password.text = "";
-          error = "Incorrect Username or Password";
-        });;
-       }),
-     ),
-      SizedBox(height: 10,),
-      Text("$error", style: TextStyle(color: CupertinoColors.destructiveRed),)
-    ],
-    )),
     ));
   }
 }

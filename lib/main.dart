@@ -56,6 +56,10 @@ class _MyAppState extends State<MyApp> {
             controller: _username,
             placeholder: "Username",
             padding: EdgeInsets.all(13.0),
+            prefix: Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Icon(CupertinoIcons.person, color: CupertinoColors.systemGrey),
+            ),
           ),
           SizedBox(height: 5,),
           CupertinoTextField(
@@ -63,6 +67,10 @@ class _MyAppState extends State<MyApp> {
             placeholder: "Password",
             padding: EdgeInsets.all(10.0),
             obscureText: hidePassword,
+            prefix: Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Icon(CupertinoIcons.lock, color: CupertinoColors.systemGrey),
+            ),
             suffix: CupertinoButton(child: Icon(hidePassword? CupertinoIcons.eye:  CupertinoIcons.eye_slash, size: 20,), onPressed:() {
               setState(() {
                 hidePassword = !hidePassword;
@@ -73,7 +81,8 @@ class _MyAppState extends State<MyApp> {
           Container(
             width: double.maxFinite,
             decoration: BoxDecoration(
-                color: CupertinoColors.systemBlue
+                color: CupertinoColors.systemBlue,
+                borderRadius: BorderRadius.circular(8)
             ),
             child: CupertinoButton(child: Text('Login', style: TextStyle(color: CupertinoColors.white),), onPressed:(){
               isLogin(_username.text, _password.text) ?

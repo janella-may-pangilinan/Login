@@ -99,7 +99,17 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
           SizedBox(height: 10,),
-          Text("$error", style: TextStyle(color: CupertinoColors.destructiveRed),)
+          Text("$error", style: TextStyle(color: CupertinoColors.destructiveRed),),
+
+          SizedBox(height: 10,),
+          Container(
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              border: Border.all(color: CupertinoColors.systemBlue),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: CupertinoButton(child: Text('Create a new account', style: TextStyle(color: CupertinoColors.white),), onPressed:(){})
+          ),
         ],
 
       )),

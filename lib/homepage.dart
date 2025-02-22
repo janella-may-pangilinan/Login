@@ -19,7 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, String>> users = [
     {'name': 'Poul', 'image': 'images/poul.jpg', 'email': 'pouljustinmaninang@gmail.com', 'birthday': 'May 8, 2001', 'contact': '123-456-7890', 'address': 'San Luis, Pampanga', 'age': '23'},
     {'name': 'Irish', 'image': 'images/person2.jpg', 'email': 'irishjaneeemagat@gmail.com', 'birthday': 'July 7, 1998', 'contact': '345-678-9012', 'address': 'Candaba, Pampanga', 'age': '26'},
-
+    {'name': 'Janella', 'image': 'images/person1.jpg', 'email': 'janellapangilinan@gmail.com', 'birthday': 'May 27, 1995', 'contact': '456-789-0123', 'address': 'Candaba, Pampanga', 'age': '29'},
+    {'name': 'Aira', 'image': 'images/person3.jpg', 'email': 'airamaemagat@gmail.com', 'birthday': 'March 4, 1995', 'contact': '567-890-1234', 'address': 'Candaba, Pampanga', 'age': '29'},
   ];
 
   List<Map<String, String>> filteredUsers = [];

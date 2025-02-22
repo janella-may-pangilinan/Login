@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
             child: CupertinoButton(child: Text('Login', style: TextStyle(color: CupertinoColors.white),), onPressed:(){
               isLogin(_username.text, _password.text) ?
 
-              Navigator.push(context,CupertinoPageRoute(builder: (context)=> Homepage()))
+              Navigator.push(context,CupertinoPageRoute(builder: (context)=> HomeScreen()))
                   : setState(() {
                 _password.text = "";
                 error = "Incorrect Username or Password";

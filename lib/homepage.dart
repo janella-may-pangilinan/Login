@@ -51,32 +51,40 @@ class _HomeScreenState extends State<HomeScreen> {
           content: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: users.map((user) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue, width: 2),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: ClipOval(
-                          child: Image.asset(
-                            user['image']!,
-                            height: 31,
-                            width: 31,
-                            fit: BoxFit.cover,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: users.map((user) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.blue, width: 2),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    user['image']!,
+                                    height: 31,
+                                    width: 31,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text(user['name']!, style: TextStyle(fontSize: 12)),
+                            ],
                           ),
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(user['name']!, style: TextStyle(fontSize: 12)),
-                    ],
-                  ),
-                );
-              }).toList(),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           actions: [

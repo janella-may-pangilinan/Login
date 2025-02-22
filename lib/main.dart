@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
           SizedBox(height: 150,),
           Row(
             children: [
-              Text('facebook', style: TextStyle(color: CupertinoColors.systemBlue, fontWeight: FontWeight.bold, fontSize: 30),),
+              Text('Threads', style: TextStyle(color: CupertinoColors.systemBlue, fontWeight: FontWeight.bold, fontSize: 30),),
             ],
           ),
           SizedBox(height: 20,),
